@@ -56,6 +56,7 @@
 		</dependency>
 	</dependencies>
 
+	
 	<build>
 		<finalName>tasks-backend</finalName>
 		<plugins>
@@ -73,6 +74,13 @@
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
+					<excution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</excution>
 				</executions>
 				<configuration>
 					<destFile>${sonar.jacoco.reportPath}</destFile>

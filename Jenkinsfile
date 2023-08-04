@@ -11,5 +11,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage ('Deploy Back') {
+            steps {
+                deploy adapters: [tomcat8(credentialsId: '68e0d715-c962-4b1c-a519-904fc6d5d767', path: '', url: 'http://193.123.103.197:8001')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
+            }
+        }
     }
 }

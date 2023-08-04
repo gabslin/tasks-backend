@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         }
-        stage ('Deploy Back') {
+        stage ('Deploy Front') {
             steps {
                 dir('Frontend') {
                     git branch: 'master', url: 'https://github.com/gabslin/tasks-frontend.git'

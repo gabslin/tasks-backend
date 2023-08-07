@@ -59,6 +59,7 @@ pipeline {
     post {
         always{
             junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, test-funcional/target/surefire-reports/*.xml, test-funcional/target/failsafe-reports/*.xml'
+            archiveArtifacts artifacts: 'target/tasks-backend.war, Frontend/target/tasks.war', followSymlinks: false, onlyIfSuccessful: true
         }
     }
 }

@@ -41,7 +41,7 @@ pipeline {
                 }
             }
         }
-        stage ('Deploy Prdo') {
+        stage ('Deploy Prod') {
             steps {
                 sh 'docker compose build' 
                 sh 'docker compose up -d'
@@ -54,6 +54,11 @@ pipeline {
                     sh "mvn verify '-Dskip.surefire.tests'"
                 }
             }
+        }
+    }
+    post {
+        always{
+            junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml, test-funcional/target/surefire-reports/*.xml, test-funcional/target/failsafe-reports/*.xml'
         }
     }
 }

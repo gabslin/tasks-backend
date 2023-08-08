@@ -12,10 +12,10 @@ pipeline {
             }
         }
         stage ('Sonar Analysis') {
-            enviroment {
-                scannerHome = tool 'SONAR_SCANNER'
-            }
             steps {
+                enviroment {
+                    scannerHome = tool 'SONAR_SCANNER'
+                }
                 withSonarQubeEnv('Sonar_local'){
                     sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=Deployback -Dsonar.projectName='Deployback' -Dsonar.host.url=http://193.123.103.197:9000 -Dsonar.token=sqp_47e5c7c343659ea6d1895081c1e81b158306f09a -Dsonar.java.binaries=target"
                 }
